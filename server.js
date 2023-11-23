@@ -30,7 +30,7 @@ http
       if (err) {
         throw err;
       }
-      response.writeHead(200, { "Content-type": "text/plain" });
+      response.writeHead(200, { "Content-type": "text/html" });
       response.write(data);
       response.end;
     });
