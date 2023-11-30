@@ -64,17 +64,34 @@ let sportsMovies = [
     }
 ];
 
-// GET requests
+// GET Requests 
 app.get('/', (req, res) => {
     res.send('Welcome to Great Sports Movies!');
 });
 
-app.get('/documentation', (req, res) => {
-    res.sendFile('public/documentation.html', { root: __dirname});
-});
-
+// Gets list of data about all Great Sports Movies
 app.get('/movies', (req, res) => {
     res.json(sportsMovies);
+});
+
+// Gets data about a single movie, by title
+
+// Get data about a genre (description), by title
+
+// Get data about a director, by name
+
+// Adds data about new users that register
+
+// Update information about a user
+
+// Adds a movie to a user's favorites list
+
+// Deletes a movie from a user's favorites list
+
+// Deletes a user
+
+app.get('/documentation', (req, res) => {
+    res.sendFile('public/documentation.html', { root: __dirname});
 });
 
 // listen for requests
