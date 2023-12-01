@@ -10,6 +10,7 @@ app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Something is off...');
 });
+app.use(bodyParser.json());
 
 let sportsMovies = [
     {
@@ -75,20 +76,46 @@ app.get('/movies', (req, res) => {
 });
 
 // Gets data about a single movie, by title
+app.get('/movies/:title', (req, res) => {
+    res.json(sportsMovies.find((movie) => {
+        return sportsMovies.title === req.params.name
+    }));
+});
 
 // Get data about a genre (description), by title
+app.get('/movies/:title/:genre', (req, res) => {
+    res.send('Successful GET request returning data about a genre by movie title.');
+});
 
 // Get data about a director, by name
+app.get('/movies/:director', (req, res) => {
+    res.send('Successful GET request returning data about a director.');
+});
 
 // Adds data about new users that register
+app.post('/users', (req, res) => {
+    res.send('Successful POST request returning data about a new user.');
+});
 
 // Update information about a user
+app.put('/users/:name', (req, res) => {
+    res.send('Successful PUT request returning message of completion of update to user information.');
+});
 
 // Adds a movie to a user's favorites list
+app.post('/users/:name/:title', (req, res) => {
+    res.send("Successful POST request returning message of movie added to user's favorite's list.");
+});
 
 // Deletes a movie from a user's favorites list
+app.delete('/users/:name/:title', (req, res) => {
+    res.send("Successful DELETE request returning message of movie removal from user's favorite's list.");
+});
 
 // Deletes a user
+app.delete('/users/:name', (req, res) => {
+    res.send('Successful DELETE request returning message of user removal from registry.');
+});
 
 app.get('/documentation', (req, res) => {
     res.sendFile('public/documentation.html', { root: __dirname});
