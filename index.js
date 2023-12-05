@@ -16,7 +16,7 @@ let sportsMovies = [
     {
         title: 'Without Limits',
         director: {
-            directorName: 'Robert Towne',
+            name: 'Robert Towne',
             birthDate: '11/23/1934'
         },
         genre: {
@@ -29,7 +29,7 @@ let sportsMovies = [
     {
         title: 'The Replacements',
         director: {
-            directorName: 'Howard Deutch',
+            name: 'Howard Deutch',
             birthDate: '9/14/1950'
         },
         genre: {
@@ -42,7 +42,7 @@ let sportsMovies = [
     {
         title: 'Hoosiers',
         director: {
-            directorName: 'David Anspaugh',
+            name: 'David Anspaugh',
             birthDate: '9/24/1946'
         },
         genre: {
@@ -55,7 +55,7 @@ let sportsMovies = [
     {
         title: 'Running Brave',
         director: {
-            directorName: 'Donald Shebib',
+            name: 'Donald Shebib',
             birthDate: '1/27/1938',
             deceasedDate: '11/5/2023'
         },
@@ -69,7 +69,7 @@ let sportsMovies = [
     {
         title: 'Rudy',
         director: {
-            directorName: 'David Anspaugh',
+            name: 'David Anspaugh',
             birthDate: '9/24/1946'
         },
         genre: {
@@ -82,7 +82,7 @@ let sportsMovies = [
     {
         title: 'Race',
         director: {
-            directorName: 'Stephen Hopkins',
+            name: 'Stephen Hopkins',
             birthDate: '11/1'
         },
         genre: {
@@ -95,7 +95,7 @@ let sportsMovies = [
     {
         title: '42',
         director: {
-            directorName: 'Brian Helgeland',
+            name: 'Brian Helgeland',
             birthDate: '1/17/1961'
         },
         genre: {
@@ -108,7 +108,7 @@ let sportsMovies = [
     {
         title: 'Mean Machine',
         director: {
-            directorName: 'Barry Skolnick',
+            name: 'Barry Skolnick',
             birthDate: '10/8/1966'
         },
         genre: {
@@ -121,7 +121,7 @@ let sportsMovies = [
     {
         title: 'Rocky',
         director: {
-            directorName: 'John G. Avildsen',
+            name: 'John G. Avildsen',
             birthDate: '12/21/1935',
             deceasedDate: '6/16/2017'
         },
@@ -135,7 +135,7 @@ let sportsMovies = [
     {
         title: 'Remember the Titans',
         director: {
-            directorName: 'Boaz Yakin',
+            name: 'Boaz Yakin',
             birthDate: '6/20/1966'
         },
         genre: {
@@ -185,15 +185,23 @@ app.get('/movies/:title/genre', (req, res) => {
 });
 
 // Get data about a director, by name
-app.get('/movies/directors/:directorName', (req, res) => {
+app.get('/movies/directors/:name', (req, res) => {
     res.json(sportsMovies.find((director) => {
-        return sportsMovies.directorName === req.params.name
+        return sportsMovies.director.name === req.params.name
     }));
 });
 
 // Adds data about new users that register
 app.post('/users', (req, res) => {
-    res.send('Successful POST request returning data about a new user.');
+    let newUser = req.body;
+
+    if (!newUser.name) {
+        const message = 'Missing "name" in request body';
+        res.status(400).send(message);
+    } else {
+        users.push(newUser);
+        res.status(201).send(newUser);
+    }
 });
 
 // Update information about a user
