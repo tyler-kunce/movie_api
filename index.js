@@ -187,7 +187,7 @@ app.get('/movies/:title/genre', (req, res) => {
 // Get data about a director, by name
 app.get('/movies/directors/:name', (req, res) => {
     res.json(sportsMovies.find((director) => {
-        return sportsMovies.director.name === req.params.name
+        return sportsMovies.name === req.params.name
     }));
 });
 
