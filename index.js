@@ -173,16 +173,18 @@ app.get('/movies/:title', (req, res) => {
 
 // Get data about a genre (description), by title
 app.get('/movies/genres/:sport', (req, res) => {
-    res.json(sportsMovies.find((genre) => {
-        return sportsMovies.genre === req.params.sport
-    }));
+    const genre = sportsMovies.find((genre) => {
+        return genre.genre.name === req.params.name
+    });
+    res.json(genre.genre);
 });
 
 // Get data about a director, by name
 app.get('/movies/directors/:name', (req, res) => {
-    res.json(sportsMovies.find((director) => {
-        return sportsMovies.director.name === req.params.name
-    }));
+    const director = sportsMovies.find((director) => {
+        return director.director.name === req.params.name
+    });
+    res.json(director.director);
 });
 
 // Adds data about new users that register
