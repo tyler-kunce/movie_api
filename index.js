@@ -172,22 +172,16 @@ app.get('/movies/:title', (req, res) => {
 });
 
 // Get data about a genre (description), by title
-app.get('/movies/:title/genre', (req, res) => {
-    let movie = sportsMovies.find((movie) => {
-        return sportsMovies.title === req.params.name
-    });
-
-    if (movie) {
-       res.send(req.params.name);
-    } else {
-        res.send('Movie with title ' + req.params.name + ' was not found.')
-    };
+app.get('/movies/genres/:sport', (req, res) => {
+    res.json(sportsMovies.find((genre) => {
+        return sportsMovies.genre === req.params.sport
+    }));
 });
 
 // Get data about a director, by name
 app.get('/movies/directors/:name', (req, res) => {
     res.json(sportsMovies.find((director) => {
-        return sportsMovies.name === req.params.name
+        return sportsMovies.director.name === req.params.name
     }));
 });
 
