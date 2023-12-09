@@ -174,7 +174,7 @@ app.get('/movies/:title', (req, res) => {
 // Get data about a genre (description), by title
 app.get('/movies/genres/:sport', (req, res) => {
     const genre = sportsMovies.find((genre) => {
-        return genre.genre.name === req.params.name
+        return genre.genre.sport === req.params.sport
     });
     res.json(genre.genre);
 });
