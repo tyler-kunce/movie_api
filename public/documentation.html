@@ -33,7 +33,7 @@
         </tr>
         <tr>
           <td>Get data about a single movie</td>
-          <td>/movies/[title]</td>
+          <td>/movies/[Title]</td>
           <td>GET</td>
           <td>None</td>
           <td>A JSON object holding data about a single movie, containing a title, director, and lead actor. Example:
@@ -46,23 +46,27 @@
         </tr>
         <tr>
           <td>Get data about a genre, by title</td>
-          <td>/movies/[title]/[genre]</td>
+          <td>/movies/genres/[Name]</td>
           <td>GET</td>
           <td>None</td>
-          <td>A JSON object holding data about a single movie, containing a title, director, and lead actor. Example:
+          <td>A JSON object holding data about a genre, by genre name. Example:
             {
-              title: 'Without Limits',
-              director: 'Robert Towne',
-              actorLead: 'Billy Crudup'
+              Name: 'Biographical',
+              Description: 'Biographical, otherwise called a biopic...'
             }
           </td>
         </tr>
         <tr>
           <td>Get data about a director, by name</td>
-          <td>/movies/[director]</td>
+          <td>/movies/directors/[Name]</td>
           <td>GET</td>
           <td>None</td>
-          <td></td>
+          <td>A JSON object holding data about a director, by director name. Example:
+            {
+              Name: 'Robert Towne',
+              Bio: 'An American screenwriter and director.',
+            }
+          </td>
         </tr>
         <tr>
           <td>Add data about a new user</td>
@@ -73,28 +77,28 @@
         </tr>
         <tr>
           <td>Update data about an existing user</td>
-          <td>/users/[name]</td>
+          <td>/users/[Username]</td>
           <td>PUT</td>
           <td>None</td>
           <td>A text message indicating the data that was updated</td>
         </tr>
         <tr>
           <td>Add movie to user's favorite's list</td>
-          <td>/users/[name]/[movie]</td>
+          <td>/users/[Username]/movies/[MovieID]</td>
           <td>POST</td>
           <td>A JSON object holding data about the movie that was added</td>
           <td>A JSON object holding data about the movie that was added</td>
         </tr>
         <tr>
           <td>Delete movie from a user's favorite's list</td>
-          <td>/users/[name]/[movie]</td>
+          <td>/users/[Username]/movie/[MovieID]</td>
           <td>DELETE</td>
           <td>None</td>
           <td>A text message indicating whether the movie was successfully removed</td>
         </tr>
         <tr>
           <td>Delete a user</td>
-          <td>/users/[name]</td>
+          <td>/users/[Username]</td>
           <td>DELETE</td>
           <td>None</td>
           <td>A text message indicating whether the user was successfully removed</td>
