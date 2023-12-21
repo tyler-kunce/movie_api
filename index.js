@@ -336,7 +336,7 @@ app.post("/users/:Username/movies/:MovieID", async (req, res) => {
 
 // Deletes a movie from a user's favorites list
 app.delete("/users/:Username/movies/:MovieID", async (req, res) => {
-  await User.findOneandUpdate(
+  await User.findOneandDelete(
     { Username: req.params.Username },
     { $pull: { FavoriteMovies: req.params.MovieID } },
     { new: true }
@@ -352,7 +352,7 @@ app.delete("/users/:Username/movies/:MovieID", async (req, res) => {
 
 // Delete a user, by username
 app.delete("/users/:Username", async (req, res) => {
-  await Users.findOneandRemove({ Username: req.params.Username })
+  await Users.findOneandDelete({ Username: req.params.Username })
     .then((user) => {
       if (!user) {
         res.status(400).send(req.params.Username + " was not found.");
