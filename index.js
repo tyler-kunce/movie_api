@@ -50,7 +50,7 @@ let auth = require('./auth')(app);
 const passport = require('passport');
 require('./passport');
 
-let sportsMovies = [
+/* let sportsMovies = [
   {
     title: "Without Limits",
     director: {
@@ -200,7 +200,7 @@ let users = [
     username: "elwood-kunce",
     email: "elwood-kunce@domain.com",
   },
-];
+]; */
 
 // GET Requests
 app.get("/", (req, res) => {
