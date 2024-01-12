@@ -31,6 +31,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const cors = require('cors');
+app.use(cors());
+
+/* Block of code to limit access to certain origins
 let allowedOrigins = ['http://localhost:8080', 'https://testsite.com'];
 
 app.use(cors({
@@ -44,6 +47,7 @@ app.use(cors({
     return callback(null, true);
   }
 }));
+*/
 
 let auth = require('./auth')(app);
 
