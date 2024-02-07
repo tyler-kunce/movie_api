@@ -214,7 +214,8 @@ app.get("/", (req, res) => {
 // Gets list of data about all Great Sports Movies
 app.get(
   "/movies",
-  /*passport.authenticate('jwt', { session: false }),*/ async (req, res) => {
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
     await Movies.find()
       .then((movies) => {
         res.status(201).json(movies);
