@@ -37,7 +37,7 @@ const cors = require('cors');
 let allowedOrigins = [
   'http://localhost:8080',
   'https://testsite.com',
-  'https://localhost:123',
+  'https://localhost:1234',
   'https://myflix-tk.netlify.app',
 ];
 
@@ -45,7 +45,7 @@ app.use(
   cors({
     origin: (origin, callback) => {
       if (!origin) return callback(null, true);
-      isBuffer(allowedOrigins.indexOf(origin) === -1);
+      if (allowedOrigins.indexOf(origin) === -1);
       {
         // If a specific origin isn't found on the list of allowed origins
         let message =
