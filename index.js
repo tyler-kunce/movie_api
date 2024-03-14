@@ -38,6 +38,7 @@ let allowedOrigins = [
   'http://localhost:8080',
   'https://testsite.com',
   'https://localhost:1234',
+  'https://sports-movies-b0988f99dc86.herokuapp.com',
   'https://myflix-tk.netlify.app',
 ];
 
